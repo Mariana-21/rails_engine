@@ -8,8 +8,8 @@ RSpec.describe "As a visitor" do
 
     expect(response).to be_successful 
 
-    items = JSON.parse(response.body)
+    json = JSON.parse(response.body, symbolize_names: true)
 
-    expect(items.count).to eq(8) 
+    expect(json.length).to eq(8)
   end
 end
