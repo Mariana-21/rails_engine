@@ -14,6 +14,7 @@ RSpec.describe "Multi Search Request" do
     expect(json[:data].first[:type]).to eq("item")
     expect(json[:data].first[:attributes][:name]).to eq(item1.name)
     expect(json[:data].first[:attributes][:description]).to eq(item1.description)
-    expect(json[:data].first[:name]).to_not eq(item2.name)
+    expect(json[:data].first[:attributes][:name]).to_not eq(item2.name)
+    expect(json[:data].first[:attributes][:name]).to_not eq(item3.name)
   end
 end
