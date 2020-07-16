@@ -2,14 +2,18 @@ require 'rails_helper'
 
 RSpec.describe "As a visitor" do
   it "I can see an items show page" do 
-    id = create(:item).id
+    item = create(:item)
 
-    get "/api/v1/items/#{id}"
+    get "/api/v1/items/#{item.id}"
 
-    item = JSON.parse(response.body)
-
+    json = JSON.parse(response.body, symbolize_names: true)
+# binding.pry
     expect(response).to be_successful 
-    expect(item["id"]).to eq(id) 
+    expect(json[:id]).to eq(item.id) 
+    expect(json[:name]).to eq(item.name) 
+    expect(json[:description]).to eq(item.description) 
+    expect(json[:unit_price]).to  eq(item.unit_price)  
+    expect(json[:merchant_id]).to  eq(item.merchant_id)  
   end
   
 end
