@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       end
       namespace :items do
         get 'find', to: 'search#show'
+        get 'find_all', to: 'search#index'
       end
       resources :items, except: [:new, :edit] do
         get 'merchant', to: 'items/merchant#show'
